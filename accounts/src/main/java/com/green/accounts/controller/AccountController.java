@@ -34,11 +34,11 @@ public class AccountController {
     @Value("${build.version}")
     private String buildVersion;
 
-    private final IAccountsService iAccountsService;
+    private IAccountsService iAccountsService;
 
-    private final Environment environment;
+    private Environment environment;
 
-    private final AccountsContactInfoDto accountsContactInfoDto;
+    private AccountsContactInfoDto accountsContactInfoDto;
 
     public AccountController(IAccountsService iAccountsService, Environment environment, AccountsContactInfoDto accountsContactInfoDto) {
         this.iAccountsService = iAccountsService;
