@@ -2,6 +2,7 @@ C:\Users\user\IdeaProjects\microservices\loans\src\main\java\com\green\loans\aud
 C:\Users\user\IdeaProjects\microservices\loans\src\main\java\com\green\loans\constants\LoansConstants.java
 C:\Users\user\IdeaProjects\microservices\loans\src\main\java\com\green\loans\controller\LoansController.java
 C:\Users\user\IdeaProjects\microservices\loans\src\main\java\com\green\loans\dto\ErrorResponseDto.java
+C:\Users\user\IdeaProjects\microservices\loans\src\main\java\com\green\loans\dto\LoansContactInfoDto.java
 C:\Users\user\IdeaProjects\microservices\loans\src\main\java\com\green\loans\dto\LoansDto.java
 C:\Users\user\IdeaProjects\microservices\loans\src\main\java\com\green\loans\dto\ResponseDto.java
 C:\Users\user\IdeaProjects\microservices\loans\src\main\java\com\green\loans\entity\BaseEntity.java
