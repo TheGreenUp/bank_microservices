@@ -2,19 +2,20 @@ spring:
   application:
     name: "configserver"
   profiles:
+    # active: native
     active: git
-  # active: native
   cloud:
     config:
       server:
+        # native:
+          # search-locations: "classpath:/config"
+          # search-locations: "file:///Users//eazybytes//Documents//config"
         git:
           uri: "https://github.com/eazybytes/eazybytes-config.git"
           default-label: main
           timeout: 5
           clone-on-start: true
           force-pull: true
-        # native:
-          # search-locations: "classpath:/config"
 
 management:
   endpoints:
@@ -36,4 +37,3 @@ encrypt:
 
 server:
   port: 8071
-

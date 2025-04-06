@@ -1,6 +1,6 @@
 package com.green.accounts.constants;
 
-public class AccountsConstants {
+public final class AccountsConstants {
     private AccountsConstants() {
         // restrict instantiation
     }

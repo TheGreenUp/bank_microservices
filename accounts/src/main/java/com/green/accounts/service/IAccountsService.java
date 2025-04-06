@@ -3,30 +3,33 @@ package com.green.accounts.service;
 import com.green.accounts.dto.CustomerDto;
 
 public interface IAccountsService {
+
     /**
-     * Method for creating account
-     * @param customerDto - CustomerDto object
+     *
+     * @param customerDto - CustomerDto Object
      */
     void createAccount(CustomerDto customerDto);
 
     /**
-     * @param mobileNumber
-     * @return customerDto
+     *
+     * @param mobileNumber - Input Mobile Number
+     * @return Accounts Details based on a given mobileNumber
      */
     CustomerDto fetchAccount(String mobileNumber);
 
     /**
      *
-     * @param customerDto
-     * @return true or false
+     * @param customerDto - CustomerDto Object
+     * @return boolean indicating if the update of Account details is successful or not
      */
     boolean updateAccount(CustomerDto customerDto);
 
     /**
      *
-     * @param mobileNumber
-     * @return
+     * @param mobileNumber - Input Mobile Number
+     * @return boolean indicating if the delete of Account details is successful or not
      */
     boolean deleteAccount(String mobileNumber);
+
 
 }
