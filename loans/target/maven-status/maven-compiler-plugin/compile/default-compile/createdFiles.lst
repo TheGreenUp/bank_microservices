@@ -12,5 +12,6 @@ com\green\loans\controller\LoansController.class
 com\green\loans\audit\AuditAwareImpl.class
 com\green\loans\exception\GlobalExceptionHandler.class
 com\green\loans\LoansApplication.class
+com\green\loans\dto\LoansContactInfoDto.class
 com\green\loans\repository\LoansRepository.class
 com\green\loans\service\ILoansService.class

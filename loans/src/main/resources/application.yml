@@ -23,10 +23,18 @@ spring:
 
 management:
   endpoints:
+    health:
+      readiness-state:
+        enabled: true
+      liveness-state:
+        enabled: true
     web:
       exposure:
         include: "*"
   endpoint:
+    health:
+      probes:
+        enabled: true
     shutdown:
       access: unrestricted
   info:
