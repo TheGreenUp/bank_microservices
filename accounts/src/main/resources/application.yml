@@ -1,6 +1,10 @@
 server:
   port: 8080
 spring:
+  cloud:
+    openfeign:
+      circuitbreaker:
+        enabled: true
   application:
     name: "accounts"
   profiles:
@@ -61,3 +65,25 @@ logging:
     com:
       green:
         accounts: DEBUG
+
+resilience4j:
+  circuitbreaker:
+    configs:
+      default:
+        sliding-window-size: 10
+        permitted-number-of-calls-in-half-open-state: 2
+        failure-rate-threshold: 50
+        wait-duration-in-open-state:
+          seconds: 10
+
+resilience4j.retry:
+  configs:
+    default:
+      maxAttempts: 3
+      waitDuration: 500
+      enableExponentialBackoff: true
+      exponentialBackoffMultiplier: 2
+      ignoreExceptions:
+        - java.lang.NullPointerException
+      retryExceptions:
+        - java.util.concurrent.TimeoutException

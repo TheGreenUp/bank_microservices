@@ -5,6 +5,9 @@ spring:
     import: "optional:configserver:http://localhost:8071/"
   cloud:
     gateway:
+      httpclient:
+        connect-timeout: 1000
+        response-timeout: 2s
       discovery:
         locator:
           enabled: true
@@ -33,3 +36,13 @@ logging:
     com:
       green:
         gatewayserver: DEBUG
+
+resilience4j:
+  circuitbreaker:
+    configs:
+      default:
+        sliding-window-size: 10
+        permitted-number-of-calls-in-half-open-state: 2
+        failure-rate-threshold: 50
+        wait-duration-in-open-state:
+          seconds: 10

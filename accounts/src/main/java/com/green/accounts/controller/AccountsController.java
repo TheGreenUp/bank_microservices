@@ -6,6 +6,7 @@ import com.green.accounts.dto.CustomerDto;
 import com.green.accounts.dto.ErrorResponseDto;
 import com.green.accounts.dto.ResponseDto;
 import com.green.accounts.service.IAccountsService;
+import io.github.resilience4j.retry.annotation.Retry;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -14,6 +15,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Pattern;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.env.Environment;
@@ -27,6 +29,7 @@ import org.springframework.web.bind.annotation.*;
  * @author Eazy Bytes
  */
 
+@Slf4j
 @Tag(
         name = "CRUD REST APIs for Accounts in EazyBank",
         description = "CRUD REST APIs in EazyBank to CREATE, UPDATE, FETCH AND DELETE account details"
@@ -195,11 +198,20 @@ public class AccountsController {
             )
     }
     )
+    @Retry(name = "getBuildInfo", fallbackMethod = "getBuildInfoFallback")
     @GetMapping("/build-info")
     public ResponseEntity<String> getBuildInfo() {
+        log.debug("getBuildInfo() method called");
         return ResponseEntity
-                    .status(HttpStatus.OK)
-                    .body(buildVersion);
+                .status(HttpStatus.OK)
+                .body(buildVersion);
+    }
+
+    private ResponseEntity<String> getBuildInfoFallback(Throwable throwable) {
+        log.debug("getBuildInfoFallback() method called");
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body("0.9");
     }
 
     @Operation(
