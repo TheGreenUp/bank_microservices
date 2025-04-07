@@ -37,3 +37,9 @@ encrypt:
 
 server:
   port: 8071
+
+logging:
+  level:
+    com:
+      green:
+        configserver: DEBUG
