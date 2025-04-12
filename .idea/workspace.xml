@@ -4,23 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="01b2059b-d7b3-4731-9f1d-687fab4460cb" name="Changes" comment="update docker-compose files;&#10;added gatewayserver">
-      <change afterPath="$PROJECT_DIR$/accounts/src/main/java/com/green/accounts/service/client/CardsFallback.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/accounts/src/main/java/com/green/accounts/service/client/LoansFallback.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gatewayserver/src/main/java/com/green/gatewayserver/controller/FallbackController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+    <list default="true" id="01b2059b-d7b3-4731-9f1d-687fab4460cb" name="Changes" comment="added more routing config;&#10;Added filters, learned @retry. circuitBreaker, fallback methods">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/accounts/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/accounts/src/main/java/com/green/accounts/controller/AccountsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/src/main/java/com/green/accounts/controller/AccountsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/accounts/src/main/java/com/green/accounts/service/client/CardsFeignClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/src/main/java/com/green/accounts/service/client/CardsFeignClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/accounts/src/main/java/com/green/accounts/service/client/LoansFeignClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/src/main/java/com/green/accounts/service/client/LoansFeignClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/accounts/src/main/java/com/green/accounts/service/impl/CustomersServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/src/main/java/com/green/accounts/service/impl/CustomersServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/accounts/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gatewayserver/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/gatewayserver/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gatewayserver/src/main/java/com/green/gatewayserver/GatewayserverApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/gatewayserver/src/main/java/com/green/gatewayserver/GatewayserverApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gatewayserver/src/main/java/com/green/gatewayserver/filters/ResponseTraceFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/gatewayserver/src/main/java/com/green/gatewayserver/filters/ResponseTraceFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose/default/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose/default/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose/prod/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose/prod/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose/qa/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose/qa/docker-compose.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gatewayserver/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/gatewayserver/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/loans/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/loans/.gitignore" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,46 +64,46 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Maven.accounts [clean].executor": "Run",
-    "Maven.cards [clean].executor": "Run",
-    "Maven.configserver [clean].executor": "Run",
-    "Maven.eurekaserver [clean].executor": "Run",
-    "Maven.gatewayserver [clean].executor": "Run",
-    "Maven.gatewayserver [compile].executor": "Run",
-    "Maven.loans [clean].executor": "Run",
-    "Maven.loans [compile].executor": "Run",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "Spring Boot.Accounts.executor": "Debug",
-    "Spring Boot.AccountsApplication.executor": "Debug",
-    "Spring Boot.Cards.executor": "Debug",
-    "Spring Boot.ConfigserverApplication.executor": "Debug",
-    "Spring Boot.EurekaserverApplication.executor": "Debug",
-    "Spring Boot.GatewayserverApplication.executor": "Debug",
-    "Spring Boot.GawewayserverApplication.executor": "Debug",
-    "Spring Boot.Loans.executor": "Debug",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/user/IdeaProjects/microservices/gatewayserver",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "SDKs",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.2",
-    "run.configurations.included.in.services": "true",
-    "settings.editor.selected.configurable": "preferences.editor",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Maven.accounts [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.cards [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.configserver [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.eurekaserver [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.gatewayserver [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.gatewayserver [compile].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.loans [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.loans [compile].executor&quot;: &quot;Run&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;Spring Boot.Accounts.executor&quot;: &quot;Debug&quot;,
+    &quot;Spring Boot.AccountsApplication.executor&quot;: &quot;Debug&quot;,
+    &quot;Spring Boot.Cards.executor&quot;: &quot;Debug&quot;,
+    &quot;Spring Boot.ConfigserverApplication.executor&quot;: &quot;Debug&quot;,
+    &quot;Spring Boot.EurekaserverApplication.executor&quot;: &quot;Debug&quot;,
+    &quot;Spring Boot.GatewayserverApplication.executor&quot;: &quot;Debug&quot;,
+    &quot;Spring Boot.GawewayserverApplication.executor&quot;: &quot;Debug&quot;,
+    &quot;Spring Boot.Loans.executor&quot;: &quot;Debug&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/user/IdeaProjects/microservices/gatewayserver&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;SDKs&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;run.configurations.included.in.services&quot;: &quot;true&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.editor&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="ReactorSettings">
     <option name="notificationShown" value="true" />
   </component>
@@ -219,7 +210,8 @@
       <workItem from="1743973737365" duration="1135000" />
       <workItem from="1744009579809" duration="432000" />
       <workItem from="1744010041785" duration="10966000" />
-      <workItem from="1744027536588" duration="6727000" />
+      <workItem from="1744027536588" duration="8701000" />
+      <workItem from="1744456061967" duration="589000" />
     </task>
     <task id="LOCAL-00001" summary="added SpringCloudConfig;&#10;change records to classes;">
       <option name="closed" value="true" />
@@ -277,7 +269,15 @@
       <option name="project" value="LOCAL" />
       <updated>1744020120144</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="added more routing config;&#10;Added filters, learned @retry. circuitBreaker, fallback methods">
+      <option name="closed" value="true" />
+      <created>1744039342980</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1744039342980</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -304,6 +304,7 @@
     <MESSAGE value="update docker-compose files;&#10;added gateway" />
     <MESSAGE value="added gitignore files" />
     <MESSAGE value="update docker-compose files;&#10;added gatewayserver" />
-    <option name="LAST_COMMIT_MESSAGE" value="update docker-compose files;&#10;added gatewayserver" />
+    <MESSAGE value="added more routing config;&#10;Added filters, learned @retry. circuitBreaker, fallback methods" />
+    <option name="LAST_COMMIT_MESSAGE" value="added more routing config;&#10;Added filters, learned @retry. circuitBreaker, fallback methods" />
   </component>
 </project>
