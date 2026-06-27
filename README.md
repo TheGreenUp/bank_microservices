@@ -18,7 +18,7 @@
 
 Проект состоит из следующих ключевых компонентов:
 
-| Микросервис | Описание | Порт (по умолчанию) |
+| Микросервис | Описание | Порт (внутренний) |
 | :--- | :--- | :--- |
 | **Config Server** | Центральный сервер конфигурации для всех сервисов. | `8071` |
 | **Eureka Server** | Сервер служб (Service Discovery) для регистрации и поиска микросервисов. | `8070` |
@@ -26,7 +26,9 @@
 | **Accounts** | Сервис для управления банковскими счетами. | `8080` |
 | **Loans** | Сервис для управления кредитами. | `8090` |
 | **Cards** | Сервис для управления банковскими картами. | `9000` |
-| **Message** | Сервис для обработки асинхронных событий (например, коммуникация между Accounts и Loans). | `8200` |
+| **Message** | Сервис для обработки асинхронных событий (например, коммуникация между Accounts и Loans). | `9010` |
+
+**Важно:** Все внешние запросы направляются **только через API-шлюз** на порт `8072`. Прямой доступ к микросервисам извне закрыт.
 
 **Основные технологии:**
 - **Язык:** Java 17+
@@ -59,49 +61,132 @@
 
 3.  **Проверьте работу сервисов:**
     - Eureka Dashboard: [http://localhost:8070](http://localhost:8070)
-    - Gateway Server: [http://localhost:8072](http://localhost:8072)
+    - Gateway Server доступен на: [http://localhost:8072](http://localhost:8072)
 
 ## Настройка безопасности (Keycloak)
 
 Для доступа к защищенным эндпоинтам микросервисов необходимо настроить Keycloak. Проект использует Keycloak, запущенный в Docker-контейнере.
 
 1.  **Доступ к консоли администрирования Keycloak:**
-    - Откройте в браузере: `http://localhost:7080` (порт по умолчанию).
-    - Используйте учетные данные, заданные в переменных окружения `docker-compose.yml` (обычно `admin` / `admin`).
+    - Откройте в браузере: `http://localhost:7080`.
+    - Используйте учетные данные, заданные в переменных окружения `docker-compose.yml` (`admin` / `admin`).
 
 2.  **Настройка Realm и клиентов:**
-    - Создайте новый Realm (например, `bank-realm`) или используйте существующий.
-    - Создайте клиентов (Clients) для каждого из ваших микросервисов (`accounts`, `loans`, `cards` и т.д.), которые будут использовать OAuth2.
+    - Создайте новый Realm (например, `master`) или используйте существующий.
+    - Создайте клиентов (Clients) для авторизации:
+      - `eazybank-callcenter-cc` (для Client Credentials)
+      - `eazybank-callcenter-ac` (для Authorization Code)
+    - Настройте для них соответствующие `client_secret`.
 
 3.  **Создание ролей и пользователей:**
     - В вашем Realm создайте роли: `ACCOUNTS`, `LOANS`, `CARD`.
-    - Создайте тестовых пользователей и назначьте им соответствующие роли. Это необходимо для авторизации доступа к конкретным сервисам.
+    - Создайте тестовых пользователей (например, `user` / `password`) и назначьте им соответствующие роли. Это необходимо для авторизации доступа к конкретным сервисам.
 
 4.  **Настройка сервисов:**
     - Убедитесь, что в файлах конфигурации (или в Config Server) для каждого микросервиса правильно указаны `issuer-uri` и другие параметры подключения к вашему Keycloak.
 
 После выполнения этих шагов приложение будет готово к работе, и доступ к эндпоинтам будет осуществляться на основе выданных JWT-токенов.
 
-## Примеры использования
+## API Эндпоинты (Postman)
 
-После запуска всех сервисов вы можете отправлять запросы через API-шлюз:
+В репозитории находится файл **[Endpoints for Postman.json](Endpoints%20for%20Postman.json)** с полной коллекцией запросов для тестирования всех микросервисов через API-шлюз.
 
-1.  **Получение токена доступа (пример через `curl`):**
-    ```bash
-    curl -X POST http://localhost:7080/realms/bank-realm/protocol/openid-connect/token \
-     -H "Content-Type: application/x-www-form-urlencoded" \
-     -d "client_id=accounts-client" \
-     -d "client_secret=ваш-секрет" \
-     -d "grant_type=password" \
-     -d "username=testuser" \
-     -d "password=testpassword"
-    ```
+### Импорт коллекции
+1. Откройте Postman.
+2. Нажмите **Import** → **Upload Files**.
+3. Выберите файл `Endpoints for Postman.json` из корня проекта.
+4. Коллекция `Microservices` будет загружена со всеми предварительно настроенными запросами.
 
-2.  **Запрос к сервису счетов через шлюз (с токеном):**
-    ```bash
-    curl -X GET http://localhost:8072/bank/accounts/api/account \
-     -H "Authorization: Bearer ваш-полученный-jwt-токен"
-    ```
+### Доступные группы запросов
+
+| Группа | Описание | Примеры эндпоинтов (через шлюз) |
+| :--- | :--- | :--- |
+| **gatewayserver** | Запросы к микросервисам через API-шлюз | `POST /eazybank/accounts/api/create`, `GET /eazybank/accounts/api/fetch` |
+| **gatewayserver_security** | Тестирование безопасности с разными типами аутентификации | `GET` (PermitAll), `POST` (ClientCredentials), `POST` (AuthCode) |
+| **KeyCloak** | Получение JWT-токенов | `POST /realms/master/protocol/openid-connect/token` |
+| **message** | Отправка асинхронных сообщений (тестовый эндпоинт) | `POST /email`, `POST /sms`, `POST /emailsms` |
+| **configserver** | Шифрование/дешифрование конфигурации | `POST /encrypt`, `POST /decrypt` |
+| **eurekaserver** | Информация о зарегистрированных сервисах | `GET /eureka/apps/{service-name}` |
+
+> **Примечание:** Эндпоинты для `accounts`, `cards`, `loans` доступны только через `gatewayserver_security` и защищены OAuth2.
+
+### Настройка авторизации в Postman
+
+Для работы с защищенными эндпоинтами (`POST` запросы) необходимо настроить авторизацию в коллекции:
+
+**Вариант 1: Client Credentials (для сервис-ту-сервис)**
+1. Откройте запрос из группы `gatewayserver_security` → `Accounts_POST_ClientCredentials`.
+2. Перейдите на вкладку **Authorization**.
+3. Выберите тип **OAuth 2.0**.
+4. Заполните параметры:
+   - `Token Name`: `clientcredentails_accesstoken`
+   - `Grant Type`: `Client Credentials`
+   - `Access Token URL`: `http://localhost:7080/realms/master/protocol/openid-connect/token`
+   - `Client ID`: `eazybank-callcenter-cc`
+   - `Client Secret`: `возьметё из keycloak-credentials`
+   - `Scope`: `openid email profile`
+   - `Client Authentication`: `Send client credentials in body`
+5. Нажмите **Get New Access Token**, затем **Use Token**.
+
+**Вариант 2: Authorization Code (для пользователей)**
+1. Откройте запрос из группы `gatewayserver_security` → `Accounts_POST_AuthCode`.
+2. Перейдите на вкладку **Authorization**.
+3. Выберите тип **OAuth 2.0**.
+4. Заполните параметры:
+   - `Token Name`: `authcode_accesstoken`
+   - `Grant Type`: `Authorization Code`
+   - `Authorize using browser`: включите
+   - `Auth URL`: `http://localhost:7080/realms/master/protocol/openid-connect/auth`
+   - `Access Token URL`: `http://localhost:7080/realms/master/protocol/openid-connect/token`
+   - `Client ID`: `eazybank-callcenter-ac`
+   - `Client Secret`: `возьметё из keycloak-credentials`
+   - `Scope`: `openid email profile`
+   - `State`: `любая строчка для защиты от CSRF, например, ew34er-344fgfg-5gfgfg`
+5. Нажмите **Get New Access Token**, войдите под пользователем (например, `user`/`password`), затем используйте полученный токен.
+
+### Примеры запросов
+
+**1. GET-запрос без аутентификации (PermitAll):**
+```bash
+GET http://localhost:8072/eazybank/accounts/api/contact-info
+```
+**Ответ:** Информация о контактах (публичный эндпоинт).
+
+**2. GET-запрос с аутентификацией (через JWT-токен):**
+```bash
+GET http://localhost:8072/eazybank/accounts/api/fetchCustomerDetails?mobileNumber=4354437687
+Authorization: Bearer {ваш-jwt-токен}
+```
+
+**3. POST-запрос с Client Credentials:**
+```bash
+POST http://localhost:8072/eazybank/accounts/api/create
+Authorization: Bearer {токен-из-Client-Credentials}
+Content-Type: application/json
+
+{
+    "name": "Madan Reddy",
+    "email": "tutor@eazybytes",
+    "mobileNumber": "4354437687"
+}
+```
+
+**4. POST-запрос с Authorization Code (через браузер):**
+```bash
+POST http://localhost:8072/eazybank/cards/api/create?mobileNumber=4354437687
+Authorization: Bearer {токен-из-Authorization-Code}
+```
+
+**5. Получение токена через Client Credentials (вручную):**
+```bash
+POST http://localhost:7080/realms/master/protocol/openid-connect/token
+Content-Type: application/x-www-form-urlencoded
+
+grant_type=client_credentials
+&client_id=eazybank-callcenter-cc
+&client_secret=берется из keycloak/credentials
+&scope=openid email profile
+```
 
 ## Структура проекта
 ```
@@ -115,33 +200,8 @@ bank_microservices/
 ├── gatewayserver/           # API Gateway (Spring Cloud Gateway)
 ├── loans/                   # Сервис управления кредитами
 ├── message/                 # Сервис для асинхронной обработки сообщений
+├── Endpoints for Postman.json  # Postman коллекция для тестирования API
 └── README.md                # Этот файл
 ```
-
-## Планы по развитию (Roadmap)
-
-- [ ] Добавить больше модульных и интеграционных тестов.
-- [ ] Улучшить обработку ошибок и валидацию.
-- [ ] Реализовать более сложные сценарии асинхронного обмена с использованием очередей (например, RabbitMQ).
-
-## Вклад в проект
-
-Если вы хотите внести свой вклад в развитие проекта, пожалуйста:
-1.  Сделайте форк репозитория.
-2.  Создайте ветку для вашей функции или исправления (`git checkout -b feature/AmazingFeature`).
-3.  Зафиксируйте изменения (`git commit -m 'Add some AmazingFeature'`).
-4.  Отправьте их в ваш форк (`git push origin feature/AmazingFeature`).
-5.  Откройте Pull Request.
-
-## Лицензия
-
-Этот проект распространяется под лицензией MIT. Подробности смотрите в файле [LICENSE](LICENSE).
-
-## Контакты
-
-**Автор:** Daniel Hryn (TheGreenUp)
-- GitHub: [TheGreenUp](https://github.com/TheGreenUp)
-
----
 
 **Спасибо за интерес к проекту!**
