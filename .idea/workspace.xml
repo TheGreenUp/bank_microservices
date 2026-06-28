@@ -4,27 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="81784749-f13f-4c41-ab1d-1e8283789a39" name="Changes" comment="added event-driven microservice Message and set up communication via RabbitMQ">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+    <list default="true" id="81784749-f13f-4c41-ab1d-1e8283789a39" name="Changes" comment="switched from RabbitMQ to Apache Kafka &amp; added some .idea files">
+      <change afterPath="$PROJECT_DIR$/k8s/k8s.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/accounts/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/accounts/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/loans/target/jib-cache/layers/23de146b62d464b8fccd3cea96bea1dae01dd89d71ab6baff84e0e1715fa0a36/7ff876d33da0b78ba136b53cbfb205205b042bc01e1e8a2a41cda5e17f2fffc9" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/loans/target/jib-cache/layers/33eab29e2cfe674197119e721220df51650b8572a127627bbbd1832e82e53b8b/e7dd1cd53f653b02fa77483d35fd69b38b4a0e1cc3259c0b16238b3f8fab7c22" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/loans/target/jib-cache/layers/719765decb61476dcb7b49ab9ce9c120557256192c488c5be22f478ecdaadfac/a45f636b4b3c626299b1d667fa4263c9396f8841f3094697c16f5b175897009b" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/loans/target/jib-cache/layers/e2d5012a56a374bd44743a7c73835d3a8ab6e08f7fefe250ea0a6f63c398604f/ba9e95390d071ffe667a3f3f2a511ef2afc0a988471e1ddffc0c6d9094aa0bfa" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/loans/target/jib-cache/selectors/366b3fe1fbf009042fc0ce9c391be831ff3c922d63ebb94bf337f6f6e5d8ed66" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/loans/target/jib-cache/selectors/74551ade6a119133fdb775c15acc0fa07fe2fa8545c0d7ce5ef366844321d3bc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/loans/target/jib-cache/selectors/8b190d254e4aa523ba2d6fe7c925f0e5e2db72b2653df492c0473791cd045702" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/loans/target/jib-cache/selectors/c8cd23a41a82443f14fa0f6da1481d18547b8af505d9ce3d20c81dd4ca6c96a7" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/loans/target/jib-image.digest" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/loans/target/jib-image.id" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/loans/target/jib-image.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/message/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/message/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/message/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/message/src/main/resources/application.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,25 +17,57 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;TheGreenUp&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;git@github.com:TheGreenUp/bank_microservices.git&quot;,
+    &quot;accountId&quot;: &quot;3f955edb-e7df-40e8-b237-0c42bee39757&quot;
+  }
+}</component>
+  <component name="KubernetesApiPersistence"><![CDATA[{}]]></component>
+  <component name="KubernetesApiProvider"><![CDATA[{
+  "isMigrated": true
+}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 3
+}</component>
+  <component name="ProjectId" id="3FlTzAV3KpqpNTVa9A0ahyPG7ta" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RequestMappingsPanelOrder0": "0",
     "RequestMappingsPanelOrder1": "1",
     "RequestMappingsPanelWidth0": "75",
     "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "Spring Boot.Accounts.executor": "Debug",
     "Spring Boot.ConfigServer.executor": "Debug",
     "Spring Boot.EurekaserverApplication.executor": "Debug",
     "Spring Boot.GatewayServer.executor": "Debug",
     "Spring Boot.MessageApplication.executor": "Debug",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "C:/Users/user/IdeaProjects/microservices/message",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/user/IdeaProjects/microservices/k8s",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.pluginManager"
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="ReactorSettings">
@@ -67,8 +82,46 @@
       </method>
     </configuration>
   </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-fdfe4dae3a2d-intellij.indexing.shared.core-IU-243.21565.193" />
+        <option value="bundled-js-predefined-d6986cc7102b-e768b9ed790e-JavaScript-IU-243.21565.193" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
+    <task id="LOCAL-00001" summary="deleted trash-files from targer folder">
+      <option name="closed" value="true" />
+      <created>1782585473884</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1782585473884</updated>
+    </task>
+    <task id="LOCAL-00002" summary="switched from RabbitMQ to Apache Kafka &amp; added some .idea files">
+      <option name="closed" value="true" />
+      <created>1782585530020</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1782585530020</updated>
+    </task>
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="81784749-f13f-4c41-ab1d-1e8283789a39" name="Changes" comment="switched from RabbitMQ to Apache Kafka &amp; added some .idea files" />
+      <created>1782648940319</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1782648940319</updated>
+      <workItem from="1782648945643" duration="562000" />
+      <workItem from="1782652923546" duration="3867000" />
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -83,6 +136,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="added event-driven microservice Message and set up communication via RabbitMQ" />
-    <option name="LAST_COMMIT_MESSAGE" value="added event-driven microservice Message and set up communication via RabbitMQ" />
+    <MESSAGE value="deleted trash-files from targer folder" />
+    <MESSAGE value="switched from RabbitMQ to Apache Kafka &amp; added some .idea files" />
+    <option name="LAST_COMMIT_MESSAGE" value="switched from RabbitMQ to Apache Kafka &amp; added some .idea files" />
   </component>
 </project>
