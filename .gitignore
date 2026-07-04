@@ -1,6 +1,11 @@
 # Compiled class file
 *.class
 
+#в helm
+helm/**/*.tgz
+helm/**/Chart.lock
+helm/**/charts/
+
 # Log file
 *.log
 
